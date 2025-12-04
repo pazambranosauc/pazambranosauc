@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Zambrano-Saucedo - EE Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .links a {
+            background: #667eea;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .links a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .skill-tag {
+            background: #f0f0f0;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+        }
+        
+        .projects {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .project-card {
+            border: 2px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+            transform: translateY(-5px);
+        }
+        
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pedro ZAmbrano-Saucedo</h1>
+            <p class="tagline">Electrical Engineering Student | UTEP Class of 2028</p>
+            <div class="links">
+                <a href="https://github.com/pazambranosauc" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/pedro-alejandro-zambrano-saucedo-96a88838b/" target="_blank">LinkedIn</a>
+                <a href="mailto:pazambranosauc@miners.utep.edu">Email</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>About Me</h2>
+            <p>I'm an Electrical Engineering student at the University of Texas at El Paso, focused on embedded systems, digital design, and IoT applications. I love building things that combine hardware and software to solve real-world problems.</p>
+        </section>
+
+        <section>
+            <h2>Skills</h2>
+            <div class="skills">
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">C/C++</div>
+                <div class="skill-tag">Arduino</div>
+                <div class="skill-tag">Circuit Design</div>
+                <div class="skill-tag">Digital Logic</div>
+                <div class="skill-tag">Git/GitHub</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            <div class="projects">
+                <div class="project-card">
+                    <h3>LED Blink Controller</h3>
+                    <p><strong>Technologies:</strong> Arduino, C++</p>
+                    <p>My first Arduino project - programmed an LED to blink in different patterns. Learned digital I/O and basic programming concepts.</p>
+                    <p><a href="#">View on GitHub →</a></p>
+                </div>
+                
+                <div class="project-card">
+                    <h3>More Projects Coming Soon!</h3>
+                    <p>Currently working on temperature monitoring and sensor integration projects.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <p><strong>University of Texas at El Paso</strong><br>
+            Bachelor of Science in Electrical Engineering<br>
+            Expected Graduation: May 2030<br>
+            GPA: [ ]</p>
+        </section>
+
+        <section>
+            <h2>Involvement</h2>
+            <p><strong>IEEE UTEP Student Branch</strong> - Member<br>
+            Participating in technical workshops and networking events.</p>
+        </section>
+
+        <footer>
+            <p>© 2025 Pedro Zambrano-Saucedo | Built with HTML & CSS | Hosted on GitHub Pages</p>
+            <p>Last Updated: December 2025</p>
+        </footer>
+    </div>
+</body>
+</html>
