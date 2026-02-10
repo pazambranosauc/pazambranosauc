@@ -1,16 +1,21 @@
-## Hi there 👋
-
-<!--
-**pazambranosauc/pazambranosauc** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+# UTEP Electrical Engineering Projects
+   
+   ## About Me
+   I'm an Electrical Engineering student at the University of Texas at El Paso.
+   This repository showcases my hands-on projects and learning journey.
+   
+   ## Projects
+   - LED Blink
+   - Traffic Lights
+   - Button LED
+   - Temperature and Humidity monitor
+   - Distance and Parking sensor
+   - EE Calculator (working on improvements..)
+   
+   ## Skills
+   - Learning: Python, Arduino, Circuit Analysis
+   
+   ## Contact
+   - LinkedIn: https://www.linkedin.com/in/pedro-alejandro-zambrano-saucedo-96a88838b 
+   - Email: pazambranosauc@miners.utep.edu
+   - YouTube: https://m.youtube.com/channel/UCnptnVM3h0722NjUki3-IMA
