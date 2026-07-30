@@ -183,7 +183,7 @@
         }
         
         .category-content.show {
-            max-height: 3000px;
+            max-height: 4000px;
             padding: 20px;
         }
         
@@ -286,6 +286,14 @@
         .project-content a:hover {
             color: #764ba2;
             border-bottom: 2px solid #764ba2;
+        }
+
+        .project-content .placeholder-note {
+            display: inline-block;
+            margin-top: 10px;
+            color: #888;
+            font-style: italic;
+            font-size: 0.95em;
         }
         
         /* Expand/Collapse All Button */
@@ -405,6 +413,19 @@
                     </div>
                     <div class="category-content">
                         <div class="projects">
+
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h4>ESP32 Custom PCB Design (In Progress — pre-fabrication testing)</h4>
+                                    <span class="arrow">▼</span>
+                                </div>
+                                <div class="project-content">
+                                    <p><strong>Technologies:</strong> KiCad, ESP32-WROOM-32, CP2102N USB-UART</p>
+                                    <p>Designed a custom ESP32 development board in KiCad through multiple schematic revision cycles, correcting bypass capacitor placement, pull-up resistor values, and a TX/RX signal crossover along the way. Integrated a CP2102N USB-UART bridge with auto-reset circuitry to allow direct programming without external hardware. Currently in final testing ahead of ordering fabrication.</p>
+                                    <a href="#" target="_blank">GitHub repo coming soon →</a>
+                                </div>
+                            </div>
+
                             <div class="project-card">
                                 <div class="project-header">
                                     <h4>LED Blink Controller</h4>
@@ -493,13 +514,12 @@
 
                             <div class="project-card">
                                 <div class="project-header">
-                                    <h4>Smart Load Monitoring and Safety Systems (on progress)</h4>
+                                    <h4>Smart Load Monitoring and Safety System (In Progress)</h4>
                                     <span class="arrow">▼</span>
                                 </div>
                                 <div class="project-content">
-                                    <p><strong>Technologies:</strong> ESP32, ESPRESSIF-IDF, C</p>
-                                    <p>This project is meant to administrate the energy flowing through a load, looking for danger conditions to safely cut the energy flow. 
-                                    This is one of my most ambitious projects now, meant to learn from data monitoring, experimental electricity flow, and safe systems control.</p>
+                                    <p><strong>Technologies:</strong> ESP32, ESP-IDF, C</p>
+                                    <p>Monitors real-time electrical load conditions and is designed to automatically disconnect power when hazardous thresholds are exceeded. One of my most ambitious projects so far — meant to build real experience in data monitoring, electrical load behavior, and safety-critical control logic, using the same core pattern (sensor read → threshold detection → automatic action) used in systems like recovery-deployment electronics.</p>
                                     <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/Smart-Load-Monitoring-and-Safety-Systems">View on GitHub →</a>
                                 </div>
                             </div>
@@ -510,11 +530,22 @@
                                     <span class="arrow">▼</span>
                                 </div>
                                 <div class="project-content">
-                                    <p><strong>Technologies:</strong> ESP32, ESPRESSIF-IDF, C</p>
-                                    <p>This game cosole contains 3 games, Flappy Bird, Snake, and Tetris. I started this project for fun, but it is now teaching me programming logics like, 
-                                    game gravity, game time, sprites, and backrounds. This project really boosted my programming skills and critical thinking.</p>
+                                    <p><strong>Technologies:</strong> ESP32, ESP-IDF, C</p>
+                                    <p>This game console contains 3 games: Flappy Bird, Snake, and Tetris. Built using ESP-IDF (not the Arduino framework), which pushed me to learn the CMake/Ninja build system and real project structure instead of copy-paste libraries. Started for fun, but it ended up teaching me real programming logic — game gravity, timing, sprites, and backgrounds — and boosted my programming skills and critical thinking significantly.</p>
                                     <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/Game-Console">View on GitHub →</a> <br>
                                     <a href="https://www.youtube.com/watch?v=Bn7Uy6IJS7Y">View on Youtube →</a>
+                                </div>
+                            </div>
+
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h4>CodeSys PLC / Ladder Logic Project (In Progress)</h4>
+                                    <span class="arrow">▼</span>
+                                </div>
+                                <div class="project-content">
+                                    <p><strong>Technologies:</strong> CodeSys, Ladder Logic</p>
+                                    <p>Part of a self-directed 30-day EE study program covering RC/RLC circuit analysis and MATLAB/Simulink. Currently applying ladder logic fundamentals in a CodeSys project, translating classroom-style control logic into an actual implemented control program.</p>
+                                    <a href="#" target="_blank">GitHub repo coming soon →</a>
                                 </div>
                             </div>
                             
@@ -523,7 +554,7 @@
                                     <h4>More EE Projects Coming Soon!</h4>
                                     <span class="arrow">▼</span>
                                     <div class="project-content">
-                                        <p>Currently working on finishing the Game Console, and the Smart load monitoring & safety systems.</p>
+                                        <p>Currently finishing the Smart Load Monitoring & Safety System, testing the ESP32 custom PCB ahead of fabrication, and building out the CodeSys PLC project.</p>
                                     </div>
                                 </div>
                                 
@@ -547,7 +578,7 @@
                                 </div>
                                 <div class="project-content">
                                     <p><strong>Technologies:</strong> MetaTrader5, MQL5</p>
-                                    <p>Developed Trading Bots to perform MA and RSI trading strategies, and manage to  increase initial capital by ~4% monthly. Bots include "Take Profit" and "Stop Loss" limits which manage risk percent to ~3%.</p>
+                                    <p>Developed 5+ automated trading bots implementing MA and RSI strategies on AUD/USD and EUR/USD pairs, achieving ~7.1% average monthly return on initial capital (still in improvement). Bots include "Take Profit" and "Stop Loss" limits which manage risk percent to ~3%.</p>
                                     <!--
                                     <a href="#" target="_blank">View on GitHub →</a>
                                     -->
@@ -576,8 +607,10 @@
             <div class="skills">
                 <div class="skill-tag">Python</div>
                 <div class="skill-tag">C/C++</div>
-                <div class="skill-tag">Arduino</div>
+                <div class="skill-tag">Arduino / ESP-IDF</div>
                 <div class="skill-tag">Circuit Design</div>
+                <div class="skill-tag">PCB Design (KiCad)</div>
+                <div class="skill-tag">PLC / Ladder Logic</div>
                 <div class="skill-tag">Git/GitHub</div>
                 <div class="skill-tag">3D Printing & Design</div>
                 <div class="skill-tag">Web Development</div>
@@ -597,7 +630,7 @@
         
         <footer>
             <p>© 2026 Pedro Zambrano-Saucedo | Built with HTML, CSS & JavaScript | Hosted on GitHub Pages</p>
-            <p>Last Updated: June 2026</p>
+            <p>Last Updated: July 2026</p>
         </footer>
     </div>
 
