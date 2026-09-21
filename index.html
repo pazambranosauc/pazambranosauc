@@ -1,705 +1,1371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedro Zambrano-Saucedo - EE Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #14644d 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-            text-align: center;
-            animation: fadeInDown 0.8s ease;
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        h1 {
-            color: #14644d;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        
-        .tagline {
-            color: #14644d;
-            font-size: 1.2em;
-            margin-bottom: 20px;
-        }
-        
-        .links {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .links a {
-            background: #14644d;
-            color: white; 
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: transform 0.3s, background 0.3s;
-        }
-        
-        .links a:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
-        }
-        
-        section {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-            animation: fadeIn 0.8s ease;
-        }
-        
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        h2 {
-            color: #14644d;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #14644d;
-            padding-bottom: 10px;
-        }
-        
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .skill-tag {
-            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
-            padding: 10px 15px;
-            border-radius: 5px;
-            text-align: center;
-            border-left: 4px solid #14644d;
-            transition: all 0.3s ease;
-        }
-        
-        .skill-tag:hover {
-            transform: translateX(5px);
-            box-shadow: 0 3px 10px rgba(20, 100, 77, 0.3);
-        }
-        
-        /* CATEGORY DROPDOWN STYLES */
-        .project-categories {
-            display: grid;
-            gap: 20px;
-        }
-        
-        .category-card {
-            border: 3px solid #14644d;
-            border-radius: 10px;
-            overflow: hidden;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .category-header {
-            padding: 25px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #14644d 0%, #0f4d3a 100%);
-            color: white;
-            transition: all 0.3s ease;
-            user-select: none;
-        }
-        
-        .category-header:hover {
-            background: linear-gradient(135deg, #764ba2 0%, #5a3780 100%);
-        }
-        
-        .category-header h3 {
-            margin: 0;
-            font-size: 1.5em;
-            color: white;
-        }
-        
-        .category-arrow {
-            font-size: 1.8em;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-        
-        .category-card.active .category-arrow {
-            transform: rotate(180deg);
-        }
-        
-        .category-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, padding 0.5s ease;
-            padding: 0 20px;
-            background: #f9f9f9;
-        }
-        
-        .category-content.show {
-            max-height: 4000px;
-            padding: 20px;
-        }
-        
-        /* PROJECT DROPDOWN STYLES */
-        .projects {
-            display: grid;
-            gap: 15px;
-        }
-        
-        .project-card {
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            background: white;
-        }
-        
-        .project-header {
-            padding: 18px 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
-            transition: all 0.3s ease;
-            user-select: none;
-            border-bottom: 1px solid transparent;
-        }
-        
-        .project-header:hover {
-            background: linear-gradient(135deg, #14644d 0%, #0f4d3a 100%);
-            color: white;
-        }
-        
-        .project-header:hover h4,
-        .project-header:hover .arrow {
-            color: white;
-        }
-        
-        .project-header h4 {
-            color: #14644d;
-            margin: 0;
-            font-size: 1.2em;
-            transition: color 0.3s ease;
-        }
-        
-        .arrow {
-            font-size: 1.3em;
-            color: #14644d;
-            transition: transform 0.3s ease, color 0.3s ease;
-            font-weight: bold;
-        }
-        
-        .project-card.active .arrow {
-            transform: rotate(180deg);
-        }
-        
-        .project-card.active .project-header {
-            background: linear-gradient(135deg, #14644d 0%, #0f4d3a 100%);
-            color: white;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .project-card.active .project-header h4,
-        .project-card.active .project-header .arrow {
-            color: white;
-        }
-        
-        .project-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            padding: 0 20px;
-            background: white;
-        }
-        
-        .project-content.show {
-            max-height: 500px;
-            padding: 20px;
-        }
-        
-        .project-content p {
-            margin-bottom: 10px;
-        }
-        
-        .project-content strong {
-            color: #14644d;
-        }
-        
-        .project-content a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #14644d;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border-bottom: 2px solid transparent;
-        }
-        
-        .project-content a:hover {
-            color: #764ba2;
-            border-bottom: 2px solid #764ba2;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Zambrano-Saucedo — Electrical Engineering | Embedded &amp; PCB Design</title>
+<meta name="description" content="Electrical Engineering student at UTEP building embedded hardware end to end: KiCad PCB design, ESP-IDF firmware, Fusion 360 mechanical design.">
 
-        .project-content .placeholder-note {
-            display: inline-block;
-            margin-top: 10px;
-            color: #888;
-            font-style: italic;
-            font-size: 0.95em;
-        }
-        
-        /* Expand/Collapse All Button */
-        .projects-controls {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 15px;
-            gap: 10px;
-        }
-        
-        .control-btn {
-            background: #14644d;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-        }
-        
-        .control-btn:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(118, 75, 162, 0.3);
-        }
-        
-        /* Coming Soon Project Style */
-        .project-card.coming-soon .project-header {
-            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-            cursor: default;
-        }
-        
-        .project-card.coming-soon .project-header h4 {
-            color: #2e7d32;
-        }
-        
-        .project-card.coming-soon .arrow {
-            display: none;
-        }
-        
-        footer {
-            text-align: center;
-            color: white;
-            padding: 20px;
-            margin-top: 30px;
-        }
-        
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .tagline {
-                font-size: 1em;
-            }
-            
-            .category-header h3 {
-                font-size: 1.2em;
-            }
-            
-            .project-header h4 {
-                font-size: 1.05em;
-            }
-            
-            .skills {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-        }
-    </style>
+<!-- Open Graph: shows a preview card when the link is pasted in LinkedIn / email.
+     Add assets/og-card.png (1200x630) to make it work. -->
+<meta property="og:title" content="Pedro Zambrano-Saucedo — Electrical Engineering">
+<meta property="og:description" content="Embedded hardware, PCB design, and mechanical design. UTEP EE, class of 2029.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/og-card.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --paper:      #ecEEe9;
+  --card:       #ffffff;
+  --ink:        #131a19;
+  --ink-soft:   #5c6866;
+  --ink-faint:  #8a938f;
+  --rule:       #d3d8d2;
+  --rule-soft:  #e3e7e1;
+  --green:      #14644d;
+  --green-deep: #0e4635;
+  --green-wash: #e8f0ec;
+  --copper:     #a85a28;
+  --copper-wash:#f7efe7;
+
+  --w:1120px;
+  --nav-h:58px;
+
+  --f-sans:'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important}
+}
+
+body{
+  font-family:var(--f-sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{
+  outline:2px solid var(--copper);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  height:var(--nav-h);
+  background:rgba(236,238,233,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--rule);
+}
+.topbar-inner{
+  max-width:var(--w);margin:0 auto;height:100%;
+  padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{
+  font-weight:700;color:var(--ink);font-size:.95rem;letter-spacing:-.01em;
+  white-space:nowrap;
+}
+.brand:hover{text-decoration:none;color:var(--green)}
+.navlinks{
+  display:flex;gap:20px;align-items:center;
+  overflow-x:auto;scrollbar-width:none;
+}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{
+  font-size:.85rem;color:var(--ink-soft);white-space:nowrap;
+  padding:4px 0;border-bottom:2px solid transparent;
+}
+.navlinks a:hover{color:var(--ink);text-decoration:none}
+.navlinks a.current{color:var(--green);border-bottom-color:var(--green)}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:var(--w);margin:0 auto;padding:0 24px}
+
+section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
+
+.band{padding:64px 0;border-top:1px solid var(--rule)}
+.band:first-of-type{border-top:none}
+
+h2{
+  font-size:1.55rem;font-weight:700;letter-spacing:-.02em;
+  margin-bottom:6px;
+}
+.band-note{
+  color:var(--ink-soft);font-size:.95rem;max-width:62ch;margin-bottom:32px;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  padding:64px 0 60px;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(rgba(19,26,25,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(19,26,25,.045) 1px, transparent 1px);
+  background-size:26px 26px;
+  border-bottom:1px solid var(--rule);
+}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:48px;align-items:start;
+}
+.hero h1{
+  font-size:clamp(2.1rem,5vw,3.1rem);
+  font-weight:700;letter-spacing:-.035em;line-height:1.06;
+  margin-bottom:14px;
+}
+.role{
+  font-family:var(--f-mono);font-size:.82rem;color:var(--green);
+  margin-bottom:18px;
+}
+.lede{font-size:1.08rem;max-width:58ch;margin-bottom:16px}
+.hero p.sub{color:var(--ink-soft);max-width:58ch;font-size:.98rem}
+
+.hero-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{
+  display:inline-block;
+  padding:9px 18px;border-radius:3px;font-size:.9rem;font-weight:500;
+  border:1px solid var(--green);color:var(--green);background:transparent;
+  transition:background .15s,color .15s;
+}
+.btn:hover{background:var(--green);color:#fff;text-decoration:none}
+.btn-solid{background:var(--green);color:#fff}
+.btn-solid:hover{background:var(--green-deep);border-color:var(--green-deep)}
+
+/* datasheet-style parameter block */
+.spec{
+  background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  padding:22px 24px;
+}
+.spec-title{
+  font-family:var(--f-mono);font-size:.72rem;color:var(--ink-faint);
+  padding-bottom:10px;margin-bottom:12px;border-bottom:1px solid var(--rule-soft);
+}
+.spec dl{display:grid;grid-template-columns:auto 1fr;gap:9px 16px;font-size:.88rem}
+.spec dt{color:var(--ink-soft);white-space:nowrap}
+.spec dd{text-align:right;font-family:var(--f-mono);font-size:.8rem;line-height:1.5}
+
+/* ============================================================
+   PROJECT CARDS
+   ============================================================ */
+.projects{display:flex;flex-direction:column;gap:28px}
+
+.project{
+  background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  display:grid;grid-template-columns:340px minmax(0,1fr);
+  overflow:hidden;
+}
+.project-body{padding:26px 28px}
+
+.project-head{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;
+  margin-bottom:6px;
+}
+.project h3{font-size:1.2rem;font-weight:700;letter-spacing:-.02em}
+
+.status{
+  font-family:var(--f-mono);font-size:.68rem;
+  padding:3px 8px;border-radius:2px;white-space:nowrap;
+}
+.st-live{background:var(--green-wash);color:var(--green-deep)}
+.st-wip {background:var(--copper-wash);color:var(--copper)}
+.st-hold{background:#eceee9;color:var(--ink-soft)}
+
+.kind{
+  font-family:var(--f-mono);font-size:.72rem;color:var(--ink-faint);
+  margin-bottom:14px;
+}
+.project p{font-size:.95rem;margin-bottom:12px}
+.project p:last-of-type{margin-bottom:0}
+.project b{font-weight:600}
+
+.stack{
+  font-family:var(--f-mono);font-size:.74rem;color:var(--ink-soft);
+  border-top:1px solid var(--rule-soft);margin-top:18px;padding-top:14px;
+  line-height:1.7;
+}
+.stack span{color:var(--ink-faint)}
+
+.links{display:flex;flex-wrap:wrap;gap:18px;margin-top:14px;font-size:.88rem}
+.links a{font-weight:500;border-bottom:1px solid transparent}
+.links a:hover{text-decoration:none;border-bottom-color:var(--green)}
+
+/* captioned image strip: for a project told through several stages */
+.gallery{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;
+  margin-bottom:22px;
+}
+.gallery figure{display:flex;flex-direction:column}
+.gallery .shot{aspect-ratio:4/3;min-height:0;border:1px solid var(--rule);border-right:1px solid var(--rule)}
+.gallery figcaption{
+  font-family:var(--f-mono);font-size:.68rem;color:var(--ink-faint);
+  padding-top:8px;line-height:1.5;
+}
+.gallery figcaption b{display:block;color:var(--ink-soft);font-weight:500}
+.gallery.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:720px){.gallery,.gallery.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* full-width card: for projects where data, not a photo, is the evidence */
+.project.wide{grid-template-columns:1fr}
+
+.runs{margin-top:18px;overflow-x:auto}
+.runs table{border-collapse:collapse;width:100%;min-width:420px;font-family:var(--f-mono);font-size:.74rem}
+.runs caption{
+  text-align:left;font-family:var(--f-sans);font-size:.8rem;color:var(--ink-soft);
+  padding-bottom:10px;
+}
+.runs th{
+  text-align:right;font-weight:500;color:var(--ink-faint);
+  padding:5px 10px;border-bottom:1px solid var(--rule);
+}
+.runs th:first-child{text-align:left}
+.runs td{text-align:right;padding:4px 10px;border-bottom:1px solid var(--rule-soft)}
+.runs td:first-child{text-align:left;color:var(--ink-faint)}
+.runs tr:last-child td{border-bottom:none}
+.runs .pos{color:var(--green)}
+.runs .neg{color:var(--copper)}
+
+/* image slot + graceful placeholder when the file isn't uploaded yet */
+.shot{
+  position:relative;background:#e6e9e4;
+  border-right:1px solid var(--rule);
+  min-height:100%;
+}
+.shot img{display:block;width:100%;height:100%;object-fit:cover}
+.shot.missing{
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  background:
+    repeating-linear-gradient(45deg,#e9ebe6,#e9ebe6 10px,#e4e7e1 10px,#e4e7e1 20px);
+}
+.shot.missing img{display:none}
+.shot.missing::after{
+  content:attr(data-need);
+  font-family:var(--f-mono);font-size:.7rem;line-height:1.6;
+  color:var(--ink-faint);text-align:center;max-width:26ch;
+}
+
+/* ============================================================
+   PRACTICE GRIDS (PCB + Fusion 360)
+   ============================================================ */
+.tiles{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:22px;
+}
+.tile{
+  background:var(--card);border:1px solid var(--rule);border-radius:3px;
+  overflow:hidden;display:flex;flex-direction:column;
+}
+.tile .shot{aspect-ratio:4/3;min-height:0;border-right:none;border-bottom:1px solid var(--rule)}
+.tile-body{padding:16px 18px;display:flex;flex-direction:column;flex:1}
+.tile h3{font-size:1rem;font-weight:600;margin-bottom:4px}
+.tile .kind{margin-bottom:10px}
+.tile p{font-size:.88rem;color:var(--ink-soft);margin-bottom:12px}
+.tile .stack{margin-top:auto;padding-top:12px;font-size:.7rem}
+
+/* ============================================================
+   FUNDAMENTALS (early Arduino exercises)
+   ============================================================ */
+.fundamentals{
+  margin-top:32px;padding:24px 26px;
+  border:1px dashed var(--rule);border-radius:3px;background:rgba(255,255,255,.5);
+}
+.fundamentals h3{font-size:1rem;font-weight:600;margin-bottom:4px}
+.fundamentals p{font-size:.9rem;color:var(--ink-soft);margin-bottom:14px;max-width:64ch}
+.chip-list{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
+.chip-list a{
+  display:inline-block;font-size:.82rem;padding:5px 12px;border-radius:2px;
+  border:1px solid var(--rule);color:var(--ink-soft);background:var(--card);
+}
+.chip-list a:hover{border-color:var(--green);color:var(--green);text-decoration:none}
+
+/* ============================================================
+   SKILLS / EDUCATION / EXPERIENCE / INVOLVEMENT
+   ============================================================ */
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+.skill-col h3{
+  font-size:.9rem;font-weight:600;padding-bottom:8px;margin-bottom:12px;
+  border-bottom:2px solid var(--green);
+}
+.skill-col ul{list-style:none;font-size:.92rem}
+.skill-col li{padding:4px 0;color:var(--ink-soft)}
+.skill-col li b{color:var(--ink);font-weight:500}
+
+.rows{display:flex;flex-direction:column;gap:2px}
+.row{
+  display:grid;grid-template-columns:180px minmax(0,1fr);gap:24px;
+  padding:20px 0;border-top:1px solid var(--rule-soft);
+}
+.row:first-child{border-top:none}
+.row .when{font-family:var(--f-mono);font-size:.76rem;color:var(--ink-faint);padding-top:3px}
+.row h3{font-size:1.02rem;font-weight:600}
+.row .org{font-size:.9rem;color:var(--green);margin-bottom:8px}
+.row p{font-size:.93rem;color:var(--ink-soft);max-width:72ch}
+.row ul{font-size:.93rem;color:var(--ink-soft);max-width:72ch;padding-left:18px}
+.row li{margin-bottom:4px}
+
+/* ============================================================
+   CONTACT + FOOTER
+   ============================================================ */
+#contact .band-note{margin-bottom:26px}
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+}
+.contact-cell{background:var(--card);padding:20px 22px}
+.contact-cell span{
+  display:block;font-family:var(--f-mono);font-size:.7rem;color:var(--ink-faint);
+  margin-bottom:6px;
+}
+.contact-cell a,.contact-cell p{font-size:.95rem;word-break:break-word}
+
+footer{
+  border-top:1px solid var(--rule);padding:28px 0 40px;
+  font-family:var(--f-mono);font-size:.72rem;color:var(--ink-faint);
+}
+footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
+  display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:32px}
+  .project{grid-template-columns:1fr}
+  .shot{border-right:none;border-bottom:1px solid var(--rule);aspect-ratio:16/9;min-height:0}
+  .row{grid-template-columns:1fr;gap:6px}
+  .row .when{padding-top:0}
+}
+@media (max-width:640px){
+  .band{padding:48px 0}
+  .hero{padding:44px 0 40px}
+  .wrap,.topbar-inner{padding:0 18px}
+  .project-body{padding:22px 20px}
+  .spec dd{font-size:.75rem}
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>Pedro Zambrano-Saucedo</h1>
-            <p class="tagline">Electrical Engineering Student | UTEP Class of 2029</p>
-            <div class="links">
-                <a href="https://github.com/pazambranosauc" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/in/pedro-alejandro-zambrano-saucedo-96a88838b/" target="_blank">LinkedIn</a>
-                <a href="mailto:pazambranosauc@miners.utep.edu">Email</a>
-            </div>
-        </header>
 
-        <section>
-            <h2>About Me</h2>
-            <p>I'm an Electrical Engineering student at the University of Texas at El Paso. Focused on embedded systems, digital design, and IoT applications. I love building projects that combine hardware and software. 
-                I enjoy learnig different topics, and mastering them to find better to solve problems.</p>
-        </section>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">Pedro Zambrano-Saucedo</a>
+    <nav class="navlinks" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <!-- <a href="#pcb">PCB practice</a> --><!-- uncomment with the PCB section -->
+      <a href="#cad">Fusion 360</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#involvement">Involvement</a>
+      <!-- <a href="#awards">Awards</a> --><!-- uncomment with the Awards section -->
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-        <section>
-            <h2>Education</h2>
-            <p><strong>University of Texas at El Paso</strong><br>
-            Electrical Engineering Freshman<br>
-            Expected Graduation: May 2029<br>
-            GPA: 3.76</p>
-        </section>
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Pedro Zambrano-Saucedo</h1>
+      <p class="role">Electrical Engineering / embedded systems + PCB design</p>
+      <p class="lede">
+        I build embedded hardware end to end — schematic capture and board layout in KiCad,
+        firmware in ESP-IDF, and the mechanical parts in Fusion 360 and on my own printer.
+      </p>
+      <p class="sub">
+        Right now: a custom ESP32 development board that passed ERC and DRC and is waiting on a
+        fab order, and PLC ladder logic in CodeSys. I'm looking for a hardware, PCB, or embedded
+        internship.
+        <!-- Add the target term once you know it, e.g. "...embedded internship for Summer 2027." -->
+      </p>
 
-        <section>
-            <h2>Projects</h2>
-            <div class="projects-controls">
-                <button class="control-btn" id="expandAll">Expand All</button>
-                <button class="control-btn" id="collapseAll">Collapse All</button>
-            </div>
-            
-            <div class="project-categories">
-                <!-- EE PROJECTS CATEGORY -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <h3>⚡ EE Projects</h3>
-                        <span class="category-arrow">▼</span>
-                    </div>
-                    <div class="category-content">
-                        <div class="projects">
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>ESP32 Custom PCB Design (In Progress — pre-fabrication testing)</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> KiCad, ESP32-WROOM-32, CP2102N USB-UART</p>
-                                    <p>Designed a custom ESP32 development board in KiCad through multiple schematic revision cycles, correcting bypass capacitor placement, pull-up resistor values, and a TX/RX signal crossover along the way. Integrated a CP2102N USB-UART bridge with auto-reset circuitry to allow direct programming without external hardware. Currently in final testing ahead of ordering fabrication.</p>
-                                    <a href="#" target="_blank">GitHub repo coming soon →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Smart Load Monitoring and Safety System (In Progress)</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> ESP32, ESP-IDF, C</p>
-                                    <p>Monitors real-time electrical load conditions and is designed to automatically disconnect power when hazardous thresholds are exceeded. One of my most ambitious projects so far — meant to build real experience in data monitoring, electrical load behavior, and safety-critical control logic, using the same core pattern (sensor read → threshold detection → automatic action) used in systems like recovery-deployment electronics.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/Smart-Load-Monitoring-and-Safety-Systems">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Mini Game Console</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> ESP32, ESP-IDF, C</p>
-                                    <p>This game console contains 3 games: Flappy Bird, Snake, and Tetris. Built using ESP-IDF (not the Arduino framework), which pushed me to learn the CMake/Ninja build system and real project structure instead of copy-paste libraries. Started for fun, but it ended up teaching me real programming logic — game gravity, timing, sprites, and backgrounds — and boosted my programming skills and critical thinking significantly.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/Game-Console">View on GitHub →</a> <br>
-                                    <a href="https://www.youtube.com/watch?v=Bn7Uy6IJS7Y">View on Youtube →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>CodeSys PLC / Ladder Logic Project (In Progress)</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> CodeSys, Ladder Logic</p>
-                                    <p>Part of a self-directed 30-day EE study program covering RC/RLC circuit analysis and MATLAB/Simulink. Currently applying ladder logic fundamentals in a CodeSys project, translating classroom-style control logic into an actual implemented control program.</p>
-                                    <a href="#" target="_blank">GitHub repo coming soon →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>LED Blink Controller</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>My first Arduino project, programmed an LED to blink in different patterns. Learned digital I/O and basic programming concepts.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/01-LED-Blink" target="_blank">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Traffic Lights</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>This project was just to play around with the already learnt functions from the previous project.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/02-Traffic-Lights" target="_blank">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Button LED</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>In this project I used the functionality of a button to turn a LED on in two different ways.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/03-Button-LED" target="_blank">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Temperature and Humidity Monitor</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>This project uses the Temperature readings to then display them on the Serial Monitor and in the LCD Screen.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/04-Temp-Monitor" target="_blank">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Distance Sensor</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>This project uses a distance sensor to then display the distance in an LCD screen.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/05-Distance-Sensor" target="_blank">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>EE Calculator</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>I wanted to try something different and built this basic calculator for Electrical Engineers.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/01-EE-Calculator" target="_blank">View on GitHub →</a>
-                                </div>
-                            </div>
-
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Parking Gate</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> Arduino, C++</p>
-                                    <p>In this project I combined diffrent sensors to create parking gate. I designed and 3D printed the protoboard holder and thr pen gate. My main problem the
-                                        margin of error of the 3D prints, but I managed tosuccesfully fix it.</p>
-                                    <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/06-Parking-Gate">View on GitHub →</a> <br>
-                                    <a href="https://www.youtube.com/watch?v=Quojk_kl2gg">View on Youtube →</a>
-                                </div>
-                            </div>
-                            
-                            <div class="project-card coming-soon">
-                                <div class="project-header">
-                                    <h4>More EE Projects Coming Soon!</h4>
-                                    <span class="arrow">▼</span>
-                                    <div class="project-content">
-                                        <p>Currently finishing the Smart Load Monitoring & Safety System, testing the ESP32 custom PCB ahead of fabrication, and building out the CodeSys PLC project.</p>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- OTHERS CATEGORY -->
-                <div class="category-card">
-                    <div class="category-header">
-                        <h3>💻 Others</h3>
-                        <span class="category-arrow">▼</span>
-                    </div>
-                    <div class="category-content">
-                        <div class="projects">
-                            <div class="project-card">
-                                <div class="project-header">
-                                    <h4>Trader Bot</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <div class="project-content">
-                                    <p><strong>Technologies:</strong> MetaTrader5, MQL5</p>
-                                    <p>Developed 5+ automated trading bots implementing MA and RSI strategies on AUD/USD and EUR/USD pairs, achieving ~7.1% average monthly return on initial capital (still in improvement). Bots include "Take Profit" and "Stop Loss" limits which manage risk percent to ~3%.</p>
-                                    <!--
-                                    <a href="#" target="_blank">View on GitHub →</a>
-                                    -->
-                                </div>
-                            </div>
-                            
-                            <div class="project-card coming-soon">
-                                <div class="project-header">
-                                    <h4>More Projects Coming Soon!</h4>
-                                    <span class="arrow">▼</span>
-                                </div>
-                                <!--
-                                <div class="project-content">
-                                    <p>Working on exciting new projects in web development and data science!</p>
-                                </div>
-                                -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="skill-tag">Python</div>
-                <div class="skill-tag">C/C++</div>
-                <div class="skill-tag">Arduino / ESP-IDF</div>
-                <div class="skill-tag">Circuit Design</div>
-                <div class="skill-tag">PCB Design (KiCad)</div>
-                <div class="skill-tag">PLC / Ladder Logic</div>
-                <div class="skill-tag">Git/GitHub</div>
-                <div class="skill-tag">3D Printing & Design</div>
-                <div class="skill-tag">Web Development</div>
-                <div class="skill-tag">Soldering</div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Involvement</h2>
-            <p><strong>IEEE UTEP Student Branch</strong> - Member<br>
-            Participated in networking events.</p>
-            <p><strong>AESS UTEP</strong> - Member<br>
-            Participated in technical workshops, like soldering and PCB desig.</p>
-            <p><strong>UTEP SHPE/MAES Student Branch</strong> - Member<br>
-            Participating in technical workshops and networking events.</p>
-        </section>
-        
-        <footer>
-            <p>© 2026 Pedro Zambrano-Saucedo | Built with HTML, CSS & JavaScript | Hosted on GitHub Pages</p>
-            <p>Last Updated: July 2026</p>
-        </footer>
+      <div class="hero-links">
+        <a class="btn btn-solid" href="assets/Pedro_Zambrano_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a>
+        <a class="btn" href="https://github.com/pazambranosauc" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/pedro-alejandro-zambrano-saucedo-96a88838b/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="mailto:pazambranosauc@miners.utep.edu">Email</a>
+      </div>
     </div>
 
-    <script>
-        // Project dropdown functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryCards = document.querySelectorAll('.category-card');
-            const projectCards = document.querySelectorAll('.project-card:not(.coming-soon)');
-            const expandAllBtn = document.getElementById('expandAll');
-            const collapseAllBtn = document.getElementById('collapseAll');
-            
-            // Toggle category
-            categoryCards.forEach(category => {
-                const header = category.querySelector('.category-header');
-                const content = category.querySelector('.category-content');
-                
-                header.addEventListener('click', function() {
-                    category.classList.toggle('active');
-                    content.classList.toggle('show');
-                });
-            });
-            
-            // Toggle individual project
-            projectCards.forEach(card => {
-                const header = card.querySelector('.project-header');
-                const content = card.querySelector('.project-content');
-                
-                header.addEventListener('click', function() {
-                    card.classList.toggle('active');
-                    content.classList.toggle('show');
-                });
-            });
-            
-            // Expand all (categories AND projects)
-            expandAllBtn.addEventListener('click', function() {
-                // Expand categories
-                categoryCards.forEach(category => {
-                    category.classList.add('active');
-                    category.querySelector('.category-content').classList.add('show');
-                });
-                
-                // Expand projects
-                projectCards.forEach(card => {
-                    card.classList.add('active');
-                    card.querySelector('.project-content').classList.add('show');
-                });
-            });
-            
-            // Collapse all (categories AND projects)
-            collapseAllBtn.addEventListener('click', function() {
-                // Collapse categories
-                categoryCards.forEach(category => {
-                    category.classList.remove('active');
-                    category.querySelector('.category-content').classList.remove('show');
-                });
-                
-                // Collapse projects
-                projectCards.forEach(card => {
-                    card.classList.remove('active');
-                    card.querySelector('.project-content').classList.remove('show');
-                });
-            });
-            
-            // Smooth animation on page load
-            const sections = document.querySelectorAll('section');
-            sections.forEach((section, index) => {
-                section.style.animationDelay = `${index * 0.1}s`;
-            });
-        });
-    </script>
+    <div class="spec">
+      <div class="spec-title">At a glance</div>
+      <dl>
+        <dt>Program</dt><dd>BSEE, UTEP</dd>
+        <dt>Graduating</dt><dd>May 2029</dd>
+        <dt>GPA</dt><dd>3.76 / 4.00</dd>
+        <dt>Focus</dt><dd>Embedded · PCB design</dd>
+        <dt>Design tools</dt><dd>KiCad, Fusion 360</dd>
+        <dt>Firmware</dt><dd>ESP-IDF, C / C++</dd>
+        <dt>Bench</dt><dd>Scope, DMM, rework</dd>
+        <dt>Languages</dt><dd>English, Spanish</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section class="band" id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="band-note">
+      Hardware I designed, built, and debugged myself. Each one lists what it is, what broke,
+      and what I changed.
+    </p>
+
+    <div class="projects">
+
+      <!-- ---------- ESP32 CUSTOM PCB ---------- -->
+      <article class="project wide">
+        <div class="project-body">
+          <div class="project-head">
+            <h3>ESP32 Development Board</h3>
+            <span class="status st-wip">Fab order pending</span>
+          </div>
+          <p class="kind">Custom PCB / KiCad &middot; schematic to routed layout</p>
+
+          <div class="gallery three">
+            <figure>
+              <div class="shot" data-need="assets/esp32-schematic.png&#10;Schematic screenshot">
+                <img src="assets/esp32-schematic.png" alt="KiCad schematic of the custom ESP32 development board">
+              </div>
+              <figcaption><b>Schematic</b>Four revisions. Labelled nets after the third.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/esp32-pcb-layout.png&#10;KiCad layout screenshot">
+                <img src="assets/esp32-pcb-layout.png" alt="Two-layer PCB layout with ground pour and antenna keep-out zone">
+              </div>
+              <figcaption><b>Layout</b>Ground pour, stitched thermal pad, antenna keep-out off the board edge.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/esp32-pcb-3d.png&#10;KiCad 3D render">
+                <img src="assets/esp32-pcb-3d.png" alt="3D render of the assembled custom ESP32 development board">
+              </div>
+              <figcaption><b>3D render</b>ERC and DRC clean. Next step is the fab order.</figcaption>
+            </figure>
+          </div>
+
+          <p>
+            An ESP32-WROOM-32 development board designed from a blank schematic to a routed layout.
+            USB-C input with <b>CC pull-down resistors</b> so the port enumerates on a PD supply, an
+            <b>AMS1117-3.3</b> regulator for the 3V3 rail, and a <b>CP2102N</b> USB-UART bridge with an
+            auto-reset circuit built from two <b>MMBT3904</b> transistors &mdash; so DTR and RTS drive
+            EN and IO0 and the board flashes straight from the IDE with no jumper and no external
+            programmer. Two 20-pin headers break out the remaining GPIO.
+            <!-- Verify before the fab order: the USB symbol is a Plug, not a Receptacle. A
+                 receptacle needs 5.1k on BOTH CC1 and CC2 or the board only works one way up. -->
+          </p>
+          <p>
+            I learned KiCad on an adjustable <b>LM317</b> bench supply before this &mdash; three
+            protection diodes and a pot &mdash; which is roughly the complexity step from that board
+            to this one.
+          </p>
+          <p>
+            It took four schematic revisions to get here. I had bypass capacitors placed too far from
+            the module's power pins, wrong pull-up values, and a TX/RX crossover that would have made
+            the board unprogrammable &mdash; all caught by reading the datasheets against my own
+            schematic instead of trusting a reference design. The antenna keep-out extends past the
+            board edge, the module's ground pad is stitched through to the pour, and ERC and DRC are
+            clean. Next step is the JLCPCB order and bring-up.
+          </p>
+          <p class="stack"><span>Stack /</span> KiCad &middot; ESP32-WROOM-32 &middot; CP2102N &middot; AMS1117-3.3 &middot; MMBT3904 &middot; USB-C</p>
+          <div class="links">
+            <!-- Export the schematic to PDF from KiCad (File > Plot > PDF), put it in assets/, uncomment: -->
+            <!-- <a href="assets/esp32-schematic.pdf" target="_blank" rel="noopener">Schematic (PDF)</a> -->
+            <!-- Publish the KiCad project and gerbers, then uncomment: -->
+            <!-- <a href="https://github.com/pazambranosauc/..." target="_blank" rel="noopener">KiCad project on GitHub</a> -->
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- GAME CONSOLE ---------- -->
+      <article class="project wide">
+        <div class="project-body">
+          <div class="project-head">
+            <h3>Handheld Game Console</h3>
+            <span class="status st-live">Working</span>
+          </div>
+          <p class="kind">Embedded firmware / ESP32 &middot; breadboard to printed enclosure</p>
+
+          <div class="gallery three">
+            <figure>
+              <div class="shot" data-need="assets/game-console-proto.jpg&#10;Breadboard prototype">
+                <img src="assets/game-console-proto.jpg" alt="ESP32 and OLED on a breadboard running the Snake game">
+              </div>
+              <figcaption><b>Prototype</b>ESP32 and I&sup2;C OLED on a breadboard. Snake running.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/game-console.jpg&#10;Finished console, screen on">
+                <img src="assets/game-console.jpg" alt="Finished handheld console in a printed enclosure showing the game selector menu">
+              </div>
+              <figcaption><b>Finished</b>Soldered, in a printed enclosure, on the game selector.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/game-console-hand.jpg&#10;Console held in one hand">
+                <img src="assets/game-console-hand.jpg" alt="The console held in one hand, showing the cable exiting from the side">
+              </div>
+              <figcaption><b>In hand</b>Cable exits the side &mdash; routing it internally made the body too thick to pocket.</figcaption>
+            </figure>
+          </div>
+
+          <p>
+            A handheld console running three games I wrote from scratch &mdash; Flappy Bird, Snake, and
+            Tetris. I built it on <b>ESP-IDF</b> rather than the Arduino framework on purpose: it forced
+            me to learn the real toolchain (CMake/Ninja, component structure, menuconfig, the
+            <code>idf.py</code> flash/monitor loop) instead of dropping in libraries I didn't understand.
+          </p>
+          <p>
+            The firmware side taught me more than I expected &mdash; fixed-step game timing so speed
+            doesn't depend on frame rate, gravity and collision logic, sprite and background drawing,
+            and input debouncing that survives fast repeated presses.
+          </p>
+          <p>
+            The enclosure came out of testing it. The joystick breakout has solder tails on the back
+            that dug into my hand every time I picked it up, so I printed a cover for it before the
+            console body existed. The body followed the same logic: the USB cable leaves through the
+            side because routing it internally added enough thickness to make it awkward in a pocket.
+          </p>
+          <p class="stack"><span>Stack /</span> ESP32 &middot; ESP-IDF &middot; C &middot; CMake/Ninja &middot; I&sup2;C OLED &middot; Fusion 360 &middot; FDM printing</p>
+          <div class="links">
+            <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/Game-Console" target="_blank" rel="noopener">Code on GitHub</a>
+            <a href="https://www.youtube.com/watch?v=Bn7Uy6IJS7Y" target="_blank" rel="noopener">Demo video</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- FTC ROBOT EVOLUTION ---------- -->
+      <article class="project wide">
+        <div class="project-body">
+          <div class="project-head">
+            <h3>Competition Robot &mdash; Three-Generation Redesign</h3>
+            <span class="status st-live">Competed</span>
+          </div>
+          <p class="kind">FIRST Tech Challenge, team 15450 &middot; 2024&ndash;25 season &middot; Fusion 360 + printed parts</p>
+
+          <div class="gallery">
+            <figure>
+              <div class="shot" data-need="assets/ftc-gen1.png&#10;Gen 1 render">
+                <img src="assets/ftc-gen1.png" alt="First-generation competition robot, single claw on a vertical lift">
+              </div>
+              <figcaption><b>Gen 1</b>Single claw, vertical lift. Couldn't reach the sample area.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/ftc-gen2.png&#10;Gen 2 render">
+                <img src="assets/ftc-gen2.png" alt="Second-generation robot with a top claw and a thinner bottom claw on a linear extension">
+              </div>
+              <figcaption><b>Gen 2</b>Second, thinner claw on a linear extension. Still short, and it flexed.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/ftc-gen3.png&#10;Final render">
+                <img src="assets/ftc-gen3.png" alt="Final robot with a slide-based arm and triangular truss support">
+              </div>
+              <figcaption><b>Final</b>Slide-based reach, triangular truss, molded grip tips.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/ftc-pit.jpg&#10;Pit photo">
+                <img src="assets/ftc-pit.jpg" alt="Working on the robot in the pit at a FIRST in Texas event">
+              </div>
+              <figcaption><b>In the pit</b>Between matches at a FIRST in Texas event.</figcaption>
+            </figure>
+          </div>
+
+          <p>
+            One season, one problem, three robots. The game asked us to collect smooth rectangular
+            samples and score them, then hang the robot in the last thirty seconds. Every redesign came
+            from a specific failure on the field.
+          </p>
+          <p>
+            <b>Gen 1</b> couldn't physically reach into the sample area. <b>Gen 2</b> added a second,
+            deliberately thinner claw below the main one, sized to slip into the area without
+            disturbing the samples around the target, mounted on a linear extension &mdash; the reach
+            was still short and the extension flexed under its own length. <b>The final robot</b>
+            replaced it with a slide of the same type we used for hanging, which was stiff enough to
+            carry the reach, and added a triangular truss so the arm stopped bending and jamming at
+            full extension. The truss was my design.
+          </p>
+          <p>
+            The grip was a separate problem. The samples were smooth enough that they slipped out of
+            the claw mid-cycle, and a slip cost <b>5&ndash;10 seconds</b> to recover on a cycle that
+            ran <b>7&ndash;11 seconds</b> &mdash; a dropped sample roughly doubled what that cycle cost
+            us. Thickening the jaws didn't fix it, so I moved to casting <b>two-part RTV silicone</b>
+            grip tips in a mold I designed.
+          </p>
+
+          <div class="gallery three">
+            <figure>
+              <div class="shot" data-need="assets/ftc-claw-v2.png&#10;Claw with the small anchor holes">
+                <img src="assets/ftc-claw-v2.png" alt="Claw jaw with a pattern of small anchoring holes for the cast silicone tip">
+              </div>
+              <figcaption><b>Small holes</b>Too fine for the silicone to flow through. The tip pulled straight back out.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/ftc-claw-final.png&#10;Final claw with the single large through-hole">
+                <img src="assets/ftc-claw-final.png" alt="Final claw jaw with one large through-hole at the tip for mechanical keying">
+              </div>
+              <figcaption><b>One large hole</b>Silicone flows through and locks mechanically. This one held.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/ftc-claw-bottom-scale.png&#10;Bottom claw shown with a sample to scale">
+                <img src="assets/ftc-claw-bottom-scale.png" alt="Bottom claw mechanism modelled with a game sample in the jaws to check scale">
+              </div>
+              <figcaption><b>Scale check</b>Bottom claw modelled around the sample to size the jaw opening.</figcaption>
+            </figure>
+          </div>
+
+          <p>
+            Anchoring took three tries. The first jaw had a grid of small holes meant to key the
+            silicone in place; the holes were too fine for the material to flow through, so the tip
+            peeled off under load. The version that worked replaced them with a single large
+            through-hole at the tip &mdash; enough for the cast silicone to pass through and lock
+            mechanically rather than relying on adhesion. Over the rest of the season one tip came off
+            once, and I replaced another when it lost tack before the final event.
+          </p>
+          <p>
+            The material choices ran in both directions on purpose. Silicone doesn't bond to
+            <b>PETG</b>, so the mold is printed in PETG and the cast part releases cleanly &mdash; and
+            that same property is why I reprinted the claw itself in <b>PLA</b>. I needed the tip to
+            stay stuck to one part and let go of the other, so the two had to be different materials.
+          </p>
+          <p>
+            Fixing the grip then caused a second failure. Claws sticky enough to hold a sample also
+            stuck to the field floor &mdash; not enough to stop the robot, but enough to break bottom
+            claws and several servos. A teammate redesigned the bottom claw geometry off that finding,
+            we bench-tested it and it held samples without any silicone at all, so I never cut a second
+            mold for it. The right answer there was to stop adding material and change the shape.
+          </p>
+          <p>
+            After the grip fix we averaged about <b>12 samples per match</b> and peaked at <b>17</b>.
+          </p>
+          <p>
+            <b>What was mine:</b> I built the physical robot and rebuilt it in Fusion 360, reprinted the
+            claw in <b>PETG</b> after the original material kept cracking in service, proposed and
+            designed the triangular support structure, and designed and molded the grip tips. The
+            robots were a team effort; those pieces were mine.
+          </p>
+          <p class="stack"><span>Stack /</span> Fusion 360 &middot; FDM printing &middot; PETG &middot; two-part casting mold &middot; goBILDA hardware</p>
+        </div>
+      </article>
+
+      <!-- ---------- INSPIRESS TITAN PAYLOAD ---------- -->
+      <article class="project wide">
+        <div class="project-body">
+          <div class="project-head">
+            <h3>Titan Science Payload &mdash; Concept Design</h3>
+            <span class="status st-live">Presented to NASA judges</span>
+          </div>
+          <p class="kind">Systems engineering / UAH InSPIRESS &middot; Chief Engineer, 11-person team</p>
+
+          <div class="gallery">
+            <figure>
+              <div class="shot" data-need="assets/inspiress-citlali.png&#10;Citlali render">
+                <img src="assets/inspiress-citlali.png" alt="Citlali payload concept, a folding faceted star form">
+              </div>
+              <figcaption><b>Citlali</b>Folding star form for the orbital path. Selected.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/inspiress-papalotl.png&#10;Papalotl render">
+                <img src="assets/inspiress-papalotl.png" alt="Papalotl payload concept, a winged body housing the instrument box">
+              </div>
+              <figcaption><b>Papalotl</b>Winged body. Scored lowest on science mass ratio. Cut.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/inspiress-alebrije.png&#10;Alebrije render">
+                <img src="assets/inspiress-alebrije.png" alt="Alebrije payload concept, a cylindrical body with an imager aperture in the beak">
+              </div>
+              <figcaption><b>Alebrije</b>Cylinder that sinks into the lake. Selected.</figcaption>
+            </figure>
+            <figure>
+              <div class="shot" data-need="assets/inspiress-instruments.png&#10;Instrument packing layout">
+                <img src="assets/inspiress-instruments.png" alt="Colour-coded internal layout showing how the instruments pack inside the payload shell">
+              </div>
+              <figcaption><b>Instrument packing</b>Every instrument placed inside the envelope and mass budget.</figcaption>
+            </figure>
+          </div>
+
+          <p>
+            UAH and NASA set high school teams the problem of designing an autonomous science payload
+            for a Titan mission. The constraints were real and hard: fit inside <b>44 &times; 24 &times;
+            28 cm</b>, stay under <b>10 kg</b>, and survive <b>&minus;179&nbsp;&deg;C</b> at
+            <b>1.5 bar</b> in <b>1.352 m/s&sup2;</b> of gravity. Everything below was driven by those
+            four numbers.
+          </p>
+          <p>
+            I was Chief Engineer. What I actually did was set the mission architecture and defend it:
+            I pushed for <b>two separate exploration paths</b> &mdash; one staying with the orbiter,
+            one sinking into Ligeia Mare &mdash; when most of the team thought a single payload was
+            all we could manage. I chose the instrument set against the science objective, and I
+            reviewed the design and analysis work the rest of the team produced rather than producing
+            it myself. Three concepts were scored in a weighted trade study; two were selected and
+            merged so each exploration path had a payload suited to it.
+          </p>
+          <p>
+            Selections were made on weighted figures of merit, not preference. The science objective
+            came out as Life Supporting Elements (216 against 210 and 81). The shell material came out
+            as <b>Ti-6Al-4V (Grade 5)</b> over two alternatives (126 against 114 and 72), scored mostly
+            on density and durability. The payload carries a mass spectrometer, hyperspectral imager,
+            thermocouples and an IMU, with the imager placed at an unobstructed aperture because the
+            traceability matrix required a clear view.
+          </p>
+
+          <div class="runs">
+            <table>
+              <caption>Final mass budget by function, against a 10 kg limit.</caption>
+              <thead>
+                <tr><th scope="col">Function</th><th scope="col">Components</th><th scope="col">Mass (kg)</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Deploy</td><td>Parachute</td><td>0.14</td></tr>
+                <tr><td>Measure</td><td>1 HSI, 2 mass spectrometers, 2 thermocouples, 2 IMUs</td><td>2.98</td></tr>
+                <tr><td>Collect data</td><td>2 on-board computers</td><td>0.11</td></tr>
+                <tr><td>Provide power</td><td>2 batteries</td><td>0.90</td></tr>
+                <tr><td>Send data</td><td>2 transceivers, 2 antennas</td><td>0.82</td></tr>
+                <tr><td>House payload</td><td>Both payload shells</td><td>3.27</td></tr>
+                <tr><td><b>Total</b></td><td>Limit: 10.00</td><td><b>8.23</b></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-top:18px">
+            The analysis ran in four stages. Orbital velocity at the deployment altitude worked out to
+            <b>1584 m/s</b>; the payload leaves the deployment tube at <b>18.4 m/s</b> under
+            <b>285 m/s&sup2;</b>; the descent settles to <b>2.2 m/s</b> vertical, dropping to
+            <b>0.77 m/s</b> terminal under the parachute at <b>2.51 g</b> of load. At the lake we
+            checked buoyancy rather than assuming: <b>10.8 N</b> of weight against <b>1.32 N</b> of
+            buoyant force in a methane lake of 450&ndash;600 kg/m&sup3;, so the payload sinks as the
+            mission requires.
+          </p>
+          <p>
+            <b>What was mine:</b> the two-path mission architecture, the instrument selection, and
+            review of the team's design and calculations. The CAD was the design team's and the
+            numbers were the data analysts'; my job was deciding what to build and checking that what
+            came back held up. The team took <b>first place in Outreach</b> at the UAH competition.
+          </p>
+          <p class="stack"><span>Stack /</span> Weighted trade studies &middot; science traceability matrix &middot; mass budget &middot; requirements compliance &middot; risk analysis</p>
+          <div class="links">
+            <!-- Export the Final Review deck to PDF, put it in assets/, then uncomment: -->
+            <!-- <a href="assets/inspiress-final-review.pdf" target="_blank" rel="noopener">Final review deck (PDF)</a> -->
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- PARKING GATE ---------- -->
+      <article class="project">
+        <figure class="shot" data-need="assets/parking-gate.jpg&#10;Photo of the gate with the printed parts">
+          <img src="assets/parking-gate.jpg" alt="Automatic parking gate with 3D printed arm and sensor mount">
+        </figure>
+        <div class="project-body">
+          <div class="project-head">
+            <h3>Automatic Parking Gate</h3>
+            <span class="status st-live">Complete</span>
+          </div>
+          <p class="kind">Mechatronics / sensors + 3D printed mechanism</p>
+          <p>
+            A sensor-triggered gate that detects an approaching vehicle and raises a barrier arm.
+            I designed and printed the mechanical half myself — the breadboard mount and the pivoting
+            gate arm — which is where the real problem was.
+          </p>
+          <p>
+            The first prints didn't fit. Printed dimensions came out under nominal because of the
+            printer's own tolerance, so the pivot bound and the mount wouldn't seat. I measured the
+            error, adjusted the clearances in CAD, and reprinted until the fit was right. That
+            print-measure-adjust loop is the part I'd point to in an interview, not the sensor code.
+          </p>
+          <p class="stack"><span>Stack /</span> Arduino · C++ · Fusion 360 · FDM printing</p>
+          <div class="links">
+            <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/06-Parking-Gate" target="_blank" rel="noopener">Code on GitHub</a>
+            <a href="https://www.youtube.com/watch?v=Quojk_kl2gg" target="_blank" rel="noopener">Demo video</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- PLC TRAFFIC LIGHT ---------- -->
+      <article class="project">
+        <figure class="shot" data-need="assets/plc-ladder.png&#10;Screenshot of the ladder diagram in CodeSys">
+          <img src="assets/plc-ladder.png" alt="Ladder diagram of the traffic light control program in CodeSys">
+        </figure>
+        <div class="project-body">
+          <div class="project-head">
+            <h3>PLC Traffic Light Controller</h3>
+            <span class="status st-wip">In progress</span>
+          </div>
+          <p class="kind">Industrial control / CodeSys</p>
+          <p>
+            A traffic light sequence written in <b>Ladder Diagram</b> in CodeSys, structured as an
+            explicit state machine rather than a chain of timers. Each phase owns a latched step bit
+            set and reset with <b>S/R coils</b>, a <b>TON</b> holds the phase for its interval, and the
+            lamp coils are driven from the step bits alone, so an output can never disagree with the
+            state the program thinks it's in. The amber flash is counted by a <b>CTU</b> rather than
+            timed, which makes the flash count one value to change instead of a rewrite.
+          </p>
+          <p>
+            Part of a self-directed curriculum I'm working through alongside coursework, after
+            MATLAB/Simulink and RC/RLC analysis. I picked ladder logic because it's how control
+            systems are actually written on a plant floor, and almost nobody learns it in the first
+            two years of an EE degree. The full cycle runs in simulation; the next revision adds a stop
+            input that clears every step bit, because a sequence you can't halt isn't a controller.
+          </p>
+          <p class="stack"><span>Stack /</span> CodeSys · Ladder Diagram · IEC 61131-3</p>
+          <div class="links">
+            <!-- Link the project export or a short screen-recording once it runs. -->
+          </div>
+        </div>
+      </article>
+
+      <!-- ---------- SMART LOAD MONITORING — commented out until there is something
+           built to show. Uncomment this whole block when the board exists.
+           ----------
+      <article class="project">
+        <figure class="shot" data-need="assets/load-monitor.jpg&#10;Bench photo or block diagram">
+          <img src="assets/load-monitor.jpg" alt="Smart load monitoring and safety system on the bench">
+        </figure>
+        <div class="project-body">
+          <div class="project-head">
+            <h3>Smart Load Monitoring &amp; Safety System</h3>
+            <span class="status st-hold">In design</span>
+          </div>
+          <p class="kind">Power &amp; instrumentation / ESP32</p>
+          <p>
+            A monitor that measures current and voltage on a DC load, shows live readings on an OLED,
+            and cuts power when the load crosses a set threshold. Built around an ESP32 with an
+            <b>LM2596</b> buck converter supplying the rail; first bench milestone is validating the
+            LM2596 output under load before any of the protection logic gets written.
+          </p>
+          <p>
+            Honest status: this is at the design and parts-gathering stage, not built. I'm finishing
+            the PCB and PLC work before I pick it back up.
+          </p>
+          <p class="stack"><span>Stack /</span> ESP32 · ESP-IDF · LM2596 · OLED · DMM validation</p>
+          <div class="links">
+            <a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/Smart-Load-Monitoring-and-Safety-Systems" target="_blank" rel="noopener">Repo on GitHub</a>
+          </div>
+        </div>
+      </article>
+
+           ---------- -->
+
+      <!-- ---------- TRADING BOTS ---------- -->
+      <article class="project wide">
+        <div class="project-body">
+          <div class="project-head">
+            <h3>Algorithmic Trading Systems</h3>
+            <span class="status st-live">Tested, not deployed</span>
+          </div>
+          <p class="kind">Software / MQL5 &middot; EUR/USD H1 parameter sweep</p>
+          <p>
+            Five expert advisors written in <b>MQL5</b> for MetaTrader 5 using moving-average and RSI
+            entry rules on AUD/USD and EUR/USD, with stop-loss and take-profit brackets and position
+            sizing enforced in code. The sweep below is the moving-average expert on
+            <b>EUR/USD H1, 1 Jul 2024 to 1 Jan 2025</b> &mdash; 3,133 bars, 5.02 M ticks, 99% history
+            quality, every-tick modelling, 10,000 USD deposit at 1:100. I ran <b>14 parameter
+            variants</b> against that identical history and logged net profit, profit factor, maximum
+            equity drawdown, and Sharpe ratio for every one.
+          </p>
+
+          <div class="runs">
+            <table>
+              <caption>All 14 runs, sorted by net profit. Nothing excluded.</caption>
+              <thead>
+                <tr><th scope="col">Run</th><th scope="col">Net</th><th scope="col">Profit factor</th><th scope="col">Max equity DD</th><th scope="col">Sharpe</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>01</td><td class="pos">+1,455.66</td><td>1.12</td><td>48.44%</td><td>0.49</td></tr>
+                <tr><td>02</td><td class="pos">+1,441.24</td><td>1.11</td><td>53.21%</td><td>0.43</td></tr>
+                <tr><td>03</td><td class="pos">+1,420.11</td><td>1.10</td><td>57.55%</td><td>0.38</td></tr>
+                <tr><td>04</td><td class="pos">+1,389.01</td><td>1.14</td><td>43.25%</td><td>0.54</td></tr>
+                <tr><td>05</td><td class="pos">+1,309.79</td><td>1.08</td><td>61.51%</td><td>0.31</td></tr>
+                <tr><td>06</td><td class="pos">+1,187.42</td><td>1.07</td><td>65.09%</td><td>0.26</td></tr>
+                <tr><td>07</td><td class="pos">&nbsp;&nbsp;+500.52</td><td>1.05</td><td>43.22%</td><td>0.21</td></tr>
+                <tr><td>08</td><td class="neg">&nbsp;&nbsp;&minus;115.90</td><td>0.99</td><td>37.48%</td><td>&minus;0.06</td></tr>
+                <tr><td>09</td><td class="neg">&minus;1,156.55</td><td>0.78</td><td>30.56%</td><td>&minus;0.79</td></tr>
+                <tr><td>10</td><td class="neg">&minus;1,436.43</td><td>0.67</td><td>18.75%</td><td>&minus;1.61</td></tr>
+                <tr><td>11</td><td class="neg">&minus;1,517.79</td><td>0.75</td><td>26.67%</td><td>&minus;1.14</td></tr>
+                <tr><td>12</td><td class="neg">&minus;2,185.75</td><td>0.65</td><td>27.51%</td><td>&minus;1.70</td></tr>
+                <tr><td>13</td><td class="neg">&minus;3,182.42</td><td>0.78</td><td>45.86%</td><td>&minus;2.03</td></tr>
+                <tr><td>14</td><td class="neg">&minus;4,456.84</td><td>0.66</td><td>49.77%</td><td>&minus;2.95</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-top:18px">
+            Seven variants finished profitable and seven didn't. The best profit factor was
+            <b>1.14 over 43 trades</b>, which is nowhere near enough trades to separate an edge from
+            luck, and the best run needed a 43% equity drawdown to return 13.9%. More telling: across
+            the sweep, gross profit scaled with drawdown while the trade count stayed fixed at 43 &mdash;
+            the variants that made more money weren't finding a better signal, they were just sizing
+            up. My conclusion was that this strategy family has no edge worth trading. I'd rather
+            publish that than a return number I can't defend.
+          </p>
+          <p>
+            Two limits worth stating before anyone else does: the tester ran with zero-latency ideal
+            execution, so no slippage or requotes are modelled, and six months of H1 on a single pair
+            is one market regime, not a sample of many. Both push the results optimistic. Neither
+            changes the conclusion &mdash; a profit factor of 1.14 doesn't survive either correction.
+          </p>
+          <p>
+            The engineering held up better than the strategy. An EA runs on every tick, so entries have
+            to be idempotent, orders reconciled against what the broker actually filled, and behaviour
+            identical between the tester and a live account.
+          </p>
+          <p class="stack"><span>Stack /</span> MQL5 &middot; MetaTrader 5 &middot; Strategy Tester &middot; EUR/USD H1 &middot; 14-variant sweep</p>
+          <div class="links">
+            <!-- Push the .mq5 files and a README with this table, then uncomment: -->
+            <!-- <a href="https://github.com/pazambranosauc/..." target="_blank" rel="noopener">Code and full results</a> -->
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Early exercises, framed honestly and kept off the main cards -->
+    <div class="fundamentals">
+      <h3>Arduino fundamentals</h3>
+      <p>
+        The exercises I started on — digital I/O, sensor reads, LCD output. Coursework-level, kept
+        here for the record rather than as portfolio work.
+      </p>
+      <ul class="chip-list">
+        <li><a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/01-LED-Blink" target="_blank" rel="noopener">LED blink patterns</a></li>
+        <li><a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/02-Traffic-Lights" target="_blank" rel="noopener">Traffic lights</a></li>
+        <li><a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/03-Button-LED" target="_blank" rel="noopener">Button input</a></li>
+        <li><a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/04-Temp-Monitor" target="_blank" rel="noopener">Temperature &amp; humidity monitor</a></li>
+        <li><a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/My-Personal-EE-Projects/05-Distance-Sensor" target="_blank" rel="noopener">Ultrasonic distance sensor</a></li>
+        <li><a href="https://github.com/pazambranosauc/My-UTEP-EE-Projects/tree/main/01-EE-Calculator" target="_blank" rel="noopener">EE formula calculator</a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     PCB PRACTICE — commented out until there are three boards here.
+     Uncomment this block and the nav link above when boards 2 and 3 exist.
+     (Inner comments use <!~~ ~~> so this block can wrap them.)
+     ============================================================
+<section class="band" id="pcb">
+  <div class="wrap">
+    <h2>PCB practice</h2>
+    <p class="band-note">
+      The board I learned KiCad on, before the development board above. One full pass: schematic,
+      ERC, footprint assignment, layout, DRC.
+    </p>
+
+    <div class="tiles">
+
+      <article class="tile">
+        <figure class="shot" data-need="assets/pcb-lm317-3d.png&#10;KiCad 3D render">
+          <img src="assets/pcb-lm317-3d.png" alt="3D render of an adjustable LM317 regulator board with screw terminals">
+        </figure>
+        <div class="tile-body">
+          <h3>Adjustable LM317 supply</h3>
+          <p class="kind">Two-layer / KiCad</p>
+          <p>Bench supply built from the LM317 datasheet's reference circuit: a series input diode for
+             reverse-polarity protection, the two datasheet protection diodes across the regulator and
+             the adjust pin, and a pot setting the output. Screw terminals in and out, four mounting
+             holes, ground pour on both layers.</p>
+          <p class="stack"><span>Parts /</span> LM317 (TO-252) &middot; add diode part numbers and R/C values</p>
+        </div>
+      </article>
+
+      <!~~ TEMPLATE: copy the article above for each new board. Say the part numbers
+           and name the one layout decision you had to think about. ~~>
+
+    </div>
+  </div>
+</section>
+
+     ============================================================ -->
+
+<!-- ============================================================
+     FUSION 360 PRACTICE
+     ============================================================ -->
+<section class="band" id="cad">
+  <div class="wrap">
+    <h2>Fusion 360 practice</h2>
+    <p class="band-note">
+      Parts I modelled and printed on my own machine. Most exist because a project needed a bracket,
+      a mount, or an enclosure that didn't exist yet.
+    </p>
+
+    <div class="tiles">
+
+      <article class="tile">
+        <figure class="shot" data-need="assets/gate-printed-parts.jpg&#10;Photo of the printed arm and mount">
+          <img src="assets/gate-printed-parts.jpg" alt="Printed breadboard carrier and gate arm laid out on the bench">
+        </figure>
+        <div class="tile-body">
+          <h3>Parking gate arm &amp; mount</h3>
+          <p class="kind">Fusion 360 / FDM</p>
+          <p>Pivoting barrier arm and a breadboard carrier. Reworked twice after measuring how far the
+             printed dimensions fell from nominal, then adjusted clearances to suit.</p>
+          <p class="stack"><span>Notes /</span> tolerance fit · printed in PLA</p>
+        </div>
+      </article>
+
+      <article class="tile">
+        <figure class="shot" data-need="assets/ftc-claw-mold.png&#10;Fusion render of the two-part mold">
+          <img src="assets/ftc-claw-mold.png" alt="Two-part Fusion 360 mold for casting claw grip tips">
+        </figure>
+        <div class="tile-body">
+          <h3>Claw grip-tip mold</h3>
+          <p class="kind">Fusion 360 / tooling</p>
+          <p>Two-part split mold with locating pins, a pour channel, and drafted walls so the cast tip
+             releases cleanly. Built to solve a grip problem on the competition robot above.</p>
+          <p class="stack"><span>Notes /</span> PETG mold &middot; two-part RTV silicone &middot; PLA claw</p>
+        </div>
+      </article>
+
+      <article class="tile">
+        <figure class="shot" data-need="assets/ftc-claw-bottom.png&#10;Bottom claw mechanism render">
+          <img src="assets/ftc-claw-bottom.png" alt="Geared bottom claw mechanism on its servo mount">
+        </figure>
+        <div class="tile-body">
+          <h3>Bottom claw mechanism</h3>
+          <p class="kind">Fusion 360 / competition robotics</p>
+          <p>Geared jaw pair on a servo mount, sized around the game element so the opening clears it
+             without disturbing neighbouring pieces. Revised after the grip fix started breaking servos.</p>
+          <p class="stack"><span>Notes /</span> printed jaws &middot; geared linkage</p>
+        </div>
+      </article>
+
+      <!-- TEMPLATE — copy for each additional model.
+           If you can export an STL, put it in assets/models/ and uncomment the link below. -->
+      <article class="tile">
+        <figure class="shot" data-need="assets/cad-practice-03.png&#10;Fusion 360 render">
+          <img src="assets/cad-practice-03.png" alt="">
+        </figure>
+        <div class="tile-body">
+          <h3>Part name</h3>
+          <p class="kind">Fusion 360 / purpose</p>
+          <p>What it is, and the one constraint that made it non-trivial: a thread, a press fit,
+             a support-free print orientation, a parametric dimension table.</p>
+          <p class="stack"><span>Notes /</span> material · print settings</p>
+          <!-- <div class="links"><a href="assets/models/part.stl" download>Download STL</a></div> -->
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section class="band" id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="band-note">Listed at the level I can defend in an interview.</p>
+
+    <div class="skill-grid">
+      <div class="skill-col">
+        <h3>Hardware design</h3>
+        <ul>
+          <li><b>PCB design</b> — KiCad, schematic to routed layout</li>
+          <li><b>Circuit analysis</b> — RC / RLC, DC networks</li>
+          <li><b>Soldering</b> — through-hole and SMD rework</li>
+          <li><b>Prototyping</b> — breadboard to protoboard</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Firmware &amp; software</h3>
+        <ul>
+          <li><b>C / C++</b> — ESP-IDF, Arduino</li>
+          <li><b>Python</b></li>
+          <li><b>MATLAB / Simulink</b></li>
+          <li><b>MQL5</b></li>
+          <li><b>Git</b> — branching, remotes, Pages</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>CAD &amp; fabrication</h3>
+        <ul>
+          <li><b>Fusion 360</b> — parametric modelling</li>
+          <li><b>3D printing</b> — FDM, slicing, tolerance tuning</li>
+          <li><b>Hardware repair</b> — board-level diagnosis</li>
+        </ul>
+      </div>
+      <div class="skill-col">
+        <h3>Instruments &amp; systems</h3>
+        <ul>
+          <li><b>Oscilloscope, multimeter, bench supply</b></li>
+          <li><b>CodeSys</b> — ladder logic <em>(learning)</em></li>
+          <li><b>Linux / bash</b></li>
+          <li><b>ESP32 peripherals</b> — GPIO, UART, I²C, ESP-NOW</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXPERIENCE
+     ============================================================ -->
+<section class="band" id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="band-note">Paid work and the competition roles where I led a team.</p>
+
+    <div class="rows">
+      <div class="row">
+        <div class="when">Jul 2026 — present</div>
+        <div>
+          <h3>Technology Support</h3>
+          <p class="org">University of Texas at El Paso</p>
+          <ul>
+            <li>Diagnosed and repaired OS-level failures on 110+ laptops under departmental turnaround deadlines.</li>
+            <li>Root-caused BIOS and system-level faults on 80+ units, isolating hardware from firmware before touching anything — targeted fixes instead of blanket reimaging.</li>
+            <li>Disassembled and reassembled 100+ systems for component-level repair and parts recovery.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Aug 2021 — Jun 2025</div>
+        <div>
+          <h3>Coach and 3D Designer</h3>
+          <p class="org">FIRST Tech Challenge Robotics</p>
+          <ul>
+            <li>Competed in 20+ matches across multiple seasons, advancing to state and premier levels.</li>
+            <li>Coached a 15-person team and designed 10+ 3D-printed prototype robots.</li>
+            <li>Raised $5,000+ per season in sponsorship.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Jan 2024 — Apr 2025</div>
+        <div>
+          <h3>Chief Engineer and 3D Designer</h3>
+          <p class="org">UAH InSPIRESS</p>
+          <ul>
+            <li>Led two competition engineering teams, qualifying for the Alabama competition.</li>
+            <li>Presented a prototype simulation to NASA judges; first place in Outreach.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Jun 2024 — Aug 2025</div>
+        <div>
+          <h3>Math Tutor</h3>
+          <p class="org">DaVinci School for Science and the Arts</p>
+          <p>Adapted explanations to each student's level across a range of ability;
+             110+ students passed their STAAR exams.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDUCATION
+     ============================================================ -->
+<section class="band" id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+
+    <div class="rows">
+      <div class="row">
+        <div class="when">2025 — 2029 (expected)</div>
+        <div>
+          <h3>B.S. Electrical Engineering</h3>
+          <p class="org">University of Texas at El Paso</p>
+          <p>GPA 3.76 / 4.00.</p>
+          <!-- Add a coursework line once you have EE courses worth naming, e.g.
+               "Coursework: Circuits I, Digital Systems, Calculus III, Physics II." -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="when">Ongoing</div>
+        <div>
+          <h3>Self-directed engineering study</h3>
+          <p class="org">Independent</p>
+          <p>MATLAB/Simulink coursework, RC and RLC circuit analysis, and IEC 61131-3 ladder logic
+             in CodeSys — worked through alongside my degree to get to applied hardware sooner.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     INVOLVEMENT
+     ============================================================ -->
+<section class="band" id="involvement">
+  <div class="wrap">
+    <h2>Involvement</h2>
+
+    <div class="rows">
+      <div class="row">
+        <div class="when">Member</div>
+        <div>
+          <h3>AESS — Aerospace and Electronic Systems Society, UTEP</h3>
+          <p>Technical workshops in soldering and PCB design.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Member</div>
+        <div>
+          <h3>IEEE UTEP Student Branch</h3>
+          <p>Technical and networking events.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Member</div>
+        <div>
+          <h3>SHPE / MAES, UTEP</h3>
+          <p>Technical workshops and professional development events.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AWARDS AND RECOGNITION — commented out. Uncomment this whole
+     block when you have entries, and uncomment the nav link above.
+     ============================================================
+<section class="band" id="awards">
+  <div class="wrap">
+    <h2>Awards and recognition</h2>
+    <p class="band-note">Competition placements, scholarships, and recognitions.</p>
+
+    <div class="rows">
+      <div class="row">
+        <div class="when">Apr 2025</div>
+        <div>
+          <h3>1st place, Outreach — UAH InSPIRESS</h3>
+          <p class="org">University of Alabama in Huntsville</p>
+          <p>One line on what the award was for and who judged it.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when">Year</div>
+        <div>
+          <h3>Award name</h3>
+          <p class="org">Awarding body</p>
+          <p>What it was for, and the field size if it was competitive.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+     ============================================================ -->
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="band" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="band-note">
+      Open to hardware, PCB, and embedded internships, and happy to talk through any of the
+      projects above in detail.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-cell">
+        <span>Email</span>
+        <a href="mailto:pazambranosauc@miners.utep.edu">pazambranosauc@miners.utep.edu</a>
+      </div>
+      <div class="contact-cell">
+        <span>LinkedIn</span>
+        <a href="https://www.linkedin.com/in/pedro-alejandro-zambrano-saucedo-96a88838b/" target="_blank" rel="noopener">Pedro Zambrano-Saucedo</a>
+      </div>
+      <div class="contact-cell">
+        <span>GitHub</span>
+        <a href="https://github.com/pazambranosauc" target="_blank" rel="noopener">pazambranosauc</a>
+      </div>
+      <div class="contact-cell">
+        <span>Résumé</span>
+        <a href="assets/Pedro_Zambrano_Resume.pdf" target="_blank" rel="noopener">Download (PDF)</a>
+      </div>
+      <div class="contact-cell">
+        <span>Based in</span>
+        <p>El Paso, Texas</p>
+      </div>
+      <!-- Add a phone number here only if you want recruiters calling directly.
+      <div class="contact-cell">
+        <span>Phone</span>
+        <p>+52 (656) 457 4794</p>
+      </div>
+      -->
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <span>© 2026 Pedro Zambrano-Saucedo</span>
+    <span>Hand-written HTML, CSS, and JavaScript — hosted on GitHub Pages</span>
+  </div>
+</footer>
+
+<script>
+// Nav highlight: marks the section you're currently reading.
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.navlinks a[href^="#"]'));
+  var map = {};
+  var targets = [];
+
+  links.forEach(function (link) {
+    var el = document.querySelector(link.getAttribute('href'));
+    if (el) { map[el.id] = link; targets.push(el); }
+  });
+
+  if ('IntersectionObserver' in window && targets.length) {
+    var seen = {};
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) { seen[entry.target.id] = entry.isIntersecting; });
+      var active = targets.filter(function (t) { return seen[t.id]; })[0];
+      links.forEach(function (l) { l.classList.remove('current'); });
+      if (active && map[active.id]) { map[active.id].classList.add('current'); }
+    }, { rootMargin: '-25% 0px -65% 0px' });
+
+    targets.forEach(function (t) { observer.observe(t); });
+  }
+})();
+
+// Image slots: if an asset hasn't been uploaded yet, show the filename it expects
+// instead of a broken-image icon.
+(function () {
+  document.querySelectorAll('.shot img').forEach(function (img) {
+    var fail = function () {
+      var fig = img.closest('.shot');
+      if (fig) { fig.classList.add('missing'); }
+    };
+    img.addEventListener('error', fail);
+    if (img.complete && img.naturalWidth === 0) { fail(); }
+  });
+})();
+</script>
+
 </body>
 </html>
