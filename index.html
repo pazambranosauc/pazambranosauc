@@ -395,8 +395,8 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
       <h1>Pedro Zambrano-Saucedo</h1>
       <p class="role">Electrical Engineering / embedded systems + PCB design</p>
       <p class="lede">
-        I build embedded hardware end to end — schematic capture and board layout in KiCad,
-        firmware in ESP-IDF, and the mechanical parts in Fusion 360 and on my own printer.
+        I build embedded hardware end to end. Schematic capture and board layout in KiCad,
+        firmware in ESP-IDF, and the mechanical parts in Fusion 360 and on my own 3D printer.
       </p>
       <p class="sub">
         Right now: a custom ESP32 development board that passed ERC and DRC and is waiting on a
@@ -416,13 +416,13 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
     <div class="spec">
       <div class="spec-title">At a glance</div>
       <dl>
-        <dt>Program</dt><dd>BSEE, UTEP</dd>
+        <dt>Program</dt><dd>BS EE, UTEP</dd>
         <dt>Graduating</dt><dd>May 2029</dd>
         <dt>GPA</dt><dd>3.76 / 4.00</dd>
         <dt>Focus</dt><dd>Embedded · PCB design</dd>
         <dt>Design tools</dt><dd>KiCad, Fusion 360</dd>
         <dt>Firmware</dt><dd>ESP-IDF, C / C++</dd>
-        <dt>Bench</dt><dd>Scope, DMM, rework</dd>
+        <!-- <dt>Bench</dt><dd>Oscilloscope, Digital Multimeter, Soldering rework</dd> -->
         <dt>Languages</dt><dd>English, Spanish</dd>
       </dl>
     </div>
@@ -456,7 +456,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
               <div class="shot" data-need="assets/esp32-schematic.png&#10;Schematic screenshot">
                 <img src="assets/esp32-schematic.png" alt="KiCad schematic of the custom ESP32 development board">
               </div>
-              <figcaption><b>Schematic</b>Four revisions. Labelled nets after the third.</figcaption>
+              <figcaption><b>Schematic</b>Six revisions. Labelled nets after the fourth.</figcaption>
             </figure>
             <figure>
               <div class="shot" data-need="assets/esp32-pcb-layout.png&#10;KiCad layout screenshot">
@@ -476,21 +476,21 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             An ESP32-WROOM-32 development board designed from a blank schematic to a routed layout.
             USB-C input with <b>CC pull-down resistors</b> so the port enumerates on a PD supply, an
             <b>AMS1117-3.3</b> regulator for the 3V3 rail, and a <b>CP2102N</b> USB-UART bridge with an
-            auto-reset circuit built from two <b>MMBT3904</b> transistors &mdash; so DTR and RTS drive
+            auto-reset circuit built from two <b>MMBT3904</b> transistors. So DTR and RTS drive
             EN and IO0 and the board flashes straight from the IDE with no jumper and no external
             programmer. Two 20-pin headers break out the remaining GPIO.
             <!-- Verify before the fab order: the USB symbol is a Plug, not a Receptacle. A
                  receptacle needs 5.1k on BOTH CC1 and CC2 or the board only works one way up. -->
           </p>
           <p>
-            I learned KiCad on an adjustable <b>LM317</b> bench supply before this &mdash; three
-            protection diodes and a pot &mdash; which is roughly the complexity step from that board
+            I learned KiCad on an adjustable <b>LM317</b> bench supply before this, three
+            protection diodes and a pot, which is roughly the complexity step from that board
             to this one.
           </p>
           <p>
             It took four schematic revisions to get here. I had bypass capacitors placed too far from
             the module's power pins, wrong pull-up values, and a TX/RX crossover that would have made
-            the board unprogrammable &mdash; all caught by reading the datasheets against my own
+            the board unprogrammable. All caught by reading the datasheets against my own
             schematic instead of trusting a reference design. The antenna keep-out extends past the
             board edge, the module's ground pad is stitched through to the pour, and ERC and DRC are
             clean. Next step is the JLCPCB order and bring-up.
@@ -512,7 +512,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             <h3>Handheld Game Console</h3>
             <span class="status st-live">Working</span>
           </div>
-          <p class="kind">Embedded firmware / ESP32 &middot; breadboard to printed enclosure</p>
+          <p class="kind">Embedded firmware / ESP32 &middot; breadboard to 3D printed enclosure</p>
 
           <div class="gallery three">
             <figure>
@@ -536,13 +536,13 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           </div>
 
           <p>
-            A handheld console running three games I wrote from scratch &mdash; Flappy Bird, Snake, and
+            A handheld console running three games I wrote from scratch. Flappy Bird, Snake, and
             Tetris. I built it on <b>ESP-IDF</b> rather than the Arduino framework on purpose: it forced
             me to learn the real toolchain (CMake/Ninja, component structure, menuconfig, the
             <code>idf.py</code> flash/monitor loop) instead of dropping in libraries I didn't understand.
           </p>
           <p>
-            The firmware side taught me more than I expected &mdash; fixed-step game timing so speed
+            The firmware side taught me more than I expected. Fixed-step game timing so speed
             doesn't depend on frame rate, gravity and collision logic, sprite and background drawing,
             and input debouncing that survives fast repeated presses.
           </p>
@@ -564,10 +564,10 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
       <article class="project wide">
         <div class="project-body">
           <div class="project-head">
-            <h3>Competition Robot &mdash; Three-Generation Redesign</h3>
+            <h3>Competition Robot (Three-Generation Redesign)</h3>
             <span class="status st-live">Competed</span>
           </div>
-          <p class="kind">FIRST Tech Challenge, team 15450 &middot; 2024&ndash;25 season &middot; Fusion 360 + printed parts</p>
+          <p class="kind">FIRST Tech Challenge, team 15450 &middot; 2024-2025 season &middot; Fusion 360 + printed parts</p>
 
           <div class="gallery">
             <figure>
@@ -604,7 +604,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           <p>
             <b>Gen 1</b> couldn't physically reach into the sample area. <b>Gen 2</b> added a second,
             deliberately thinner claw below the main one, sized to slip into the area without
-            disturbing the samples around the target, mounted on a linear extension &mdash; the reach
+            disturbing the samples around the target, mounted on a linear extension, the reach
             was still short and the extension flexed under its own length. <b>The final robot</b>
             replaced it with a slide of the same type we used for hanging, which was stiff enough to
             carry the reach, and added a triangular truss so the arm stopped bending and jamming at
@@ -612,8 +612,8 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           </p>
           <p>
             The grip was a separate problem. The samples were smooth enough that they slipped out of
-            the claw mid-cycle, and a slip cost <b>5&ndash;10 seconds</b> to recover on a cycle that
-            ran <b>7&ndash;11 seconds</b> &mdash; a dropped sample roughly doubled what that cycle cost
+            the claw mid-cycle, and a slip cost <b>5-10 seconds</b> to recover on a cycle that
+            ran <b>7-11 seconds.</b> A dropped sample roughly doubled what that cycle cost
             us. Thickening the jaws didn't fix it, so I moved to casting <b>two-part RTV silicone</b>
             grip tips in a mold I designed.
           </p>
@@ -643,19 +643,19 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             Anchoring took three tries. The first jaw had a grid of small holes meant to key the
             silicone in place; the holes were too fine for the material to flow through, so the tip
             peeled off under load. The version that worked replaced them with a single large
-            through-hole at the tip &mdash; enough for the cast silicone to pass through and lock
+            through-hole at the tip, enough for the cast silicone to pass through and lock
             mechanically rather than relying on adhesion. Over the rest of the season one tip came off
             once, and I replaced another when it lost tack before the final event.
           </p>
           <p>
             The material choices ran in both directions on purpose. Silicone doesn't bond to
-            <b>PETG</b>, so the mold is printed in PETG and the cast part releases cleanly &mdash; and
+            <b>PETG</b>, so the mold is printed in PETG and the cast part releases cleanly, and
             that same property is why I reprinted the claw itself in <b>PLA</b>. I needed the tip to
             stay stuck to one part and let go of the other, so the two had to be different materials.
           </p>
           <p>
             Fixing the grip then caused a second failure. Claws sticky enough to hold a sample also
-            stuck to the field floor &mdash; not enough to stop the robot, but enough to break bottom
+            stuck to the field floor, not enough to stop the robot, but enough to break bottom
             claws and several servos. A teammate redesigned the bottom claw geometry off that finding,
             we bench-tested it and it held samples without any silicone at all, so I never cut a second
             mold for it. The right answer there was to stop adding material and change the shape.
@@ -677,7 +677,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
       <article class="project wide">
         <div class="project-body">
           <div class="project-head">
-            <h3>Titan Science Payload &mdash; Concept Design</h3>
+            <h3>Titan Science Payload (Concept Design)</h3>
             <span class="status st-live">Presented to NASA judges</span>
           </div>
           <p class="kind">Systems engineering / UAH InSPIRESS &middot; Chief Engineer, 11-person team</p>
@@ -718,11 +718,11 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           </p>
           <p>
             I was Chief Engineer. What I actually did was set the mission architecture and defend it:
-            I pushed for <b>two separate exploration paths</b> &mdash; one staying with the orbiter,
-            one sinking into Ligeia Mare &mdash; when most of the team thought a single payload was
+            I pushed for <b>two separate exploration paths.</b> One staying with the orbiter,
+            one sinking into Ligeia Mare. When most of the team thought a single payload was
             all we could manage. I chose the instrument set against the science objective, and I
             reviewed the design and analysis work the rest of the team produced rather than producing
-            it myself. Three concepts were scored in a weighted trade study; two were selected and
+            it myself. Three concepts were scored in a weighted trade study, two were selected and
             merged so each exploration path had a payload suited to it.
           </p>
           <p>
@@ -758,13 +758,13 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             <b>285 m/s&sup2;</b>; the descent settles to <b>2.2 m/s</b> vertical, dropping to
             <b>0.77 m/s</b> terminal under the parachute at <b>2.51 g</b> of load. At the lake we
             checked buoyancy rather than assuming: <b>10.8 N</b> of weight against <b>1.32 N</b> of
-            buoyant force in a methane lake of 450&ndash;600 kg/m&sup3;, so the payload sinks as the
+            buoyant force in a methane lake of 450-600 kg/m&sup3;, so the payload sinks as the
             mission requires.
           </p>
           <p>
             <b>What was mine:</b> the two-path mission architecture, the instrument selection, and
             review of the team's design and calculations. The CAD was the design team's and the
-            numbers were the data analysts'; my job was deciding what to build and checking that what
+            numbers were the data analysts'. My job was deciding what to build and checking that what
             came back held up. The team took <b>first place in Outreach</b> at the UAH competition.
           </p>
           <p class="stack"><span>Stack /</span> Weighted trade studies &middot; science traceability matrix &middot; mass budget &middot; requirements compliance &middot; risk analysis</p>
@@ -788,8 +788,8 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           <p class="kind">Mechatronics / sensors + 3D printed mechanism</p>
           <p>
             A sensor-triggered gate that detects an approaching vehicle and raises a barrier arm.
-            I designed and printed the mechanical half myself — the breadboard mount and the pivoting
-            gate arm — which is where the real problem was.
+            I designed and printed the mechanical half myself. The breadboard mount and the pivoting
+            gate arm, which is where the real problem was.
           </p>
           <p>
             The first prints didn't fit. Printed dimensions came out under nominal because of the
@@ -828,7 +828,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             Part of a self-directed curriculum I'm working through alongside coursework, after
             MATLAB/Simulink and RC/RLC analysis. I picked ladder logic because it's how control
             systems are actually written on a plant floor, and almost nobody learns it in the first
-            two years of an EE degree. The full cycle runs in simulation; the next revision adds a stop
+            two years of an EE degree. The full cycle runs in simulation. The next revision adds a stop
             input that clears every step bit, because a sequence you can't halt isn't a controller.
           </p>
           <p class="stack"><span>Stack /</span> CodeSys · Ladder Diagram · IEC 61131-3</p>
@@ -882,7 +882,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             Five expert advisors written in <b>MQL5</b> for MetaTrader 5 using moving-average and RSI
             entry rules on AUD/USD and EUR/USD, with stop-loss and take-profit brackets and position
             sizing enforced in code. The sweep below is the moving-average expert on
-            <b>EUR/USD H1, 1 Jul 2024 to 1 Jan 2025</b> &mdash; 3,133 bars, 5.02 M ticks, 99% history
+            <b>EUR/USD H1, 1 Jul 2024 to 1 Jan 2025,</b> 3,133 bars, 5.02 M ticks, 99% history
             quality, every-tick modelling, 10,000 USD deposit at 1:100. I ran <b>14 parameter
             variants</b> against that identical history and logged net profit, profit factor, maximum
             equity drawdown, and Sharpe ratio for every one.
@@ -917,7 +917,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             Seven variants finished profitable and seven didn't. The best profit factor was
             <b>1.14 over 43 trades</b>, which is nowhere near enough trades to separate an edge from
             luck, and the best run needed a 43% equity drawdown to return 13.9%. More telling: across
-            the sweep, gross profit scaled with drawdown while the trade count stayed fixed at 43 &mdash;
+            the sweep, gross profit scaled with drawdown while the trade count stayed fixed at 43,
             the variants that made more money weren't finding a better signal, they were just sizing
             up. My conclusion was that this strategy family has no edge worth trading. I'd rather
             publish that than a return number I can't defend.
@@ -926,7 +926,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
             Two limits worth stating before anyone else does: the tester ran with zero-latency ideal
             execution, so no slippage or requotes are modelled, and six months of H1 on a single pair
             is one market regime, not a sample of many. Both push the results optimistic. Neither
-            changes the conclusion &mdash; a profit factor of 1.14 doesn't survive either correction.
+            changes the conclusion, a profit factor of 1.14 doesn't survive either correction.
           </p>
           <p>
             The engineering held up better than the strategy. An EA runs on every tick, so entries have
@@ -947,7 +947,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
     <div class="fundamentals">
       <h3>Arduino fundamentals</h3>
       <p>
-        The exercises I started on — digital I/O, sensor reads, LCD output. Coursework-level, kept
+        The exercises I started on digital I/O, sensor reads, LCD output. Coursework-level, kept
         here for the record rather than as portfolio work.
       </p>
       <ul class="chip-list">
@@ -1055,7 +1055,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
       </article>
 
       <!-- TEMPLATE — copy for each additional model.
-           If you can export an STL, put it in assets/models/ and uncomment the link below. -->
+           If you can export an STL, put it in assets/models/ and uncomment the link below. 
       <article class="tile">
         <figure class="shot" data-need="assets/cad-practice-03.png&#10;Fusion 360 render">
           <img src="assets/cad-practice-03.png" alt="">
@@ -1066,10 +1066,10 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           <p>What it is, and the one constraint that made it non-trivial: a thread, a press fit,
              a support-free print orientation, a parametric dimension table.</p>
           <p class="stack"><span>Notes /</span> material · print settings</p>
-          <!-- <div class="links"><a href="assets/models/part.stl" download>Download STL</a></div> -->
+           <div class="links"><a href="assets/models/part.stl" download>Download STL</a></div> 
         </div>
       </article>
-
+     -->
     </div>
   </div>
 </section>
@@ -1139,7 +1139,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           <p class="org">University of Texas at El Paso</p>
           <ul>
             <li>Diagnosed and repaired OS-level failures on 110+ laptops under departmental turnaround deadlines.</li>
-            <li>Root-caused BIOS and system-level faults on 80+ units, isolating hardware from firmware before touching anything — targeted fixes instead of blanket reimaging.</li>
+            <li>●	Root-caused BIOS and system-level faults on 80+ units, isolating hardware vs. firmware failure points before applying targeted fixes rather than blanket reimaging.</li>
             <li>Disassembled and reassembled 100+ systems for component-level repair and parts recovery.</li>
           </ul>
         </div>
@@ -1208,7 +1208,7 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
           <h3>Self-directed engineering study</h3>
           <p class="org">Independent</p>
           <p>MATLAB/Simulink coursework, RC and RLC circuit analysis, and IEC 61131-3 ladder logic
-             in CodeSys — worked through alongside my degree to get to applied hardware sooner.</p>
+             in CodeSys. Worked through alongside my degree to get to applied hardware sooner.</p>
         </div>
       </div>
     </div>
@@ -1307,10 +1307,10 @@ footer div{max-width:var(--w);margin:0 auto;padding:0 24px;
         <span>Résumé</span>
         <a href="assets/Pedro_Zambrano_Resume.pdf" target="_blank" rel="noopener">Download (PDF)</a>
       </div>
-      <div class="contact-cell">
+    <!--  <div class="contact-cell">
         <span>Based in</span>
         <p>El Paso, Texas</p>
-      </div>
+      </div> -->
       <!-- Add a phone number here only if you want recruiters calling directly.
       <div class="contact-cell">
         <span>Phone</span>
