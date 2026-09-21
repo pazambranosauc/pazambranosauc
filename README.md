@@ -10,7 +10,7 @@
    - Button LED
    - Temperature and Humidity monitor
    - Distance and Parking sensor
-   - EE Calculator (working on improvements..)
+   - EE Calculator (working on improvements...)
    
    ## Skills
    - Learning: Python, Arduino, Circuit Analysis
